@@ -4,13 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
     <script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 
-    <title>Efektywne formularze</title>
+    <title>Drogi przez mękę z JS</title>    
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+    <script>
+        $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+    </script>
 </head>
 
 <body>
@@ -26,57 +36,6 @@
                 <input type="text" class="form-control" id="lastName" placeholder="Wpisz nazwisko" required>
             </div>
             <div class="mb-3">
-                <label for="street" class="form-label">Ulica</label>
-                <input type="text" class="form-control" id="street" placeholder="Wpisz ulicę" required>
-            </div>
-            <div class="mb-3">
-                <label for="country" class="form-label">Kraj</label>
-                <select class="form-select" id="country" required>
-                    <option value="">Wybierz kraj</option>
-                    <!-- Options will be filled by JavaScript -->
-                </select>
-            </div>
-            <div class="row mb-3">
-                <label for="phoneNumber" class="form-label">Numer telefonu komórkowego</label>
-                <div class="input-group">
-                    <select class="form-select" id="countryCode" aria-label="Wybierz numer kierunkowy">
-                        <option selected>Wybierz...</option>
-                        <option value="+48">+48 (Polska)</option>
-                        <option value="+1">+1 (Stany Zjednoczone)</option>
-                        <!-- Dodaj więcej opcji, jeśli jest to potrzebne -->
-                    </select>
-                    <input type="text" class="form-control" id="phoneNumber" placeholder="Wpisz numer komórkowy"
-                        required>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="city" class="form-label">Miasto</label>
-                <input type="text" class="form-control" id="city" placeholder="Wpisz miasto" required>
-            </div>
-            <div class="mb-3">
-                <label for="zipCode" class="form-label">Kod pocztowy</label>
-                <input type="text" class="form-control" id="zipCode" placeholder="Wpisz kod pocztowy" required>
-            </div>
-            <div class="mb-3">
-                <label for="shippingMethod" class="form-label">Rodzaj przesyłki</label>
-                <select class="form-select" id="shippingMethod" required>
-                    <option value="">Wybierz rodzaj przesyłki</option>
-                    <option value="DPD">DPD</option>
-                    <option value="InPost">InPost</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="paymentMethod" class="form-label">Rodzaj płatności</label>
-                <select class="form-select" id="paymentMethod" required>
-                    <option value="">Wybierz rodzaj płatności</option>
-                    <option value="karta">Karta</option>
-                    <option value="blik">BLIK</option>
-                    <option value="pośrednik">Pośrednik płatności</option>
-                </select>
-            </div>
-
-            <!-- Dodatkowe pola, np. dane do faktury -->
-            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1">
             </div>
@@ -84,6 +43,83 @@
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
+            <div class="mb-3">
+                <label for="street" class="form-label">Ulica</label>
+                <input type="text" class="form-control" id="street" placeholder="Wpisz ulicę" required>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="zipCode" class="form-label">Kod pocztowy</label>
+                        <input type="text" class="form-control" id="zipCode" placeholder="Wpisz kod pocztowy" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="city" class="form-label">Miasto</label>
+                        <input type="text" class="form-control" id="city" placeholder="Wpisz miasto" required>
+                    </div>
+                </div>  
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="country" class="form-label">Kraj</label></br>
+                        <select class="selectpicker" id="country" data-live-search="true" required>
+                            <option value="">Wybierz kraj</option>
+                            <option value="Poland">Poland</option>
+                            <option value="England">England</option>
+                            <option value="Spain">Spain</option>
+                            <!-- Options will be filled by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row mb-3">
+                        <label for="phoneNumber" class="form-label">Numer telefonu komórkowego</label>
+                        <div class="input-group">
+                            <select class="form-select" id="countryCode" aria-label="Wybierz numer kierunkowy">
+                                <option value="">Wybierz...</option>
+                                <option value="+48">+48 (Polska)</option>
+                                <option value="+500">+500 South Georgia</option>
+                                <option value="+1">+1 (Stany Zjednoczone)</option>
+                                <!-- Dodaj więcej opcji, jeśli jest to potrzebne -->
+                            </select>
+                            <input type="text" class="form-control" id="phoneNumber" placeholder="Wpisz numer komórkowy"
+                                required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="shippingMethod" class="form-label">Rodzaj przesyłki</label>
+                <div>
+                    <input type="radio" id="dpd" name="shippingMethod" value="DPD" required>
+                    <label for="dpd">DPD</label>
+                </div>
+                <div>
+                    <input type="radio" id="inPost" name="shippingMethod" value="InPost">
+                    <label for="inPost">InPost</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="paymentMethod" class="form-label">Rodzaj płatności</label>
+                <div>
+                    <input type="radio" id="karta" name="paymentMethod" value="karta" required>
+                    <label for="karta">Karta</label>
+                </div>
+                <div>
+                    <input type="radio" id="blik" name="paymentMethod" value="blik">
+                    <label for="blik">BLIK</label>
+                </div>
+                <div>
+                    <input type="radio" id="posrednik" name="paymentMethod" value="pośrednik">
+                    <label for="posrednik">Pośrednik płatności</label>
+                </div>
+            </div>
+
+            <!-- Dodatkowe pola, np. dane do faktury -->
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="vatUE">
                 <label class="form-check-label" for="vatUE">VAT UE</label>

@@ -28,12 +28,22 @@ function getCountryByIP() {
     fetch('https://get.geojs.io/v1/ip/geo.json')
         .then(response => response.json())
         .then(data => {
-            const country = data.country;
-            // TODO inject country to form and call getCountryCode(country) function
+            const countryFetched = data.country;
+            var countrySelect = document.getElementById("country");
+
+
+            for(var i, j = 0; i = countrySelect.options[j]; j++) {
+                if(i.value == countryFetched) {
+                    countrySelect.selectedIndex = j;
+                    break;
+                }
+            }
+            getCountryCode(countryFetched); 
         })
         .catch(error => {
             console.error('Błąd pobierania danych z serwera GeoJS:', error);
         });
+
 }
 
 function getCountryCode(countryName) {
@@ -47,8 +57,28 @@ function getCountryCode(countryName) {
         return response.json();
     })
     .then(data => {        
-        const countryCode = data[0].idd.root + data[0].idd.suffixes.join("")
-        // TODO inject countryCode to form
+        const countryCodeText = data[0].idd.root + data[0].idd.suffixes.join("")
+        var countryCodeSelect = document.getElementById("countryCode");
+
+        console.log("Code: " + countryCodeText)
+
+        var found = false;
+
+        for(var i, j = 0; i = countryCodeSelect.options[j]; j++) {
+            if(i.value == countryCodeText) {
+                found = true;
+                countryCodeSelect.selectedIndex = j;
+                break;
+            }
+            if(j == 5) {
+                break;
+            }
+        }
+
+        if(found == false){
+            console.log("Code not found: " + countryCodeText)
+        }
+
     })
     .catch(error => {
         console.error('Wystąpił błąd:', error);
@@ -61,4 +91,5 @@ function getCountryCode(countryName) {
     document.addEventListener('click', handleClick);
 
     fetchAndFillCountries();
+    getCountryByIP();
 })()
