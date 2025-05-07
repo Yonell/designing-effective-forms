@@ -5,3 +5,7 @@
 .container {
     height: 90vh; 
 }
+
+.hidden {
+    display: none;
+}

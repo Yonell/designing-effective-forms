@@ -4,6 +4,8 @@ const countryInput = document.getElementById('country');
 const myForm = document.getElementById('form');
 const modal = document.getElementById('form-feedback-modal');
 const clicksInfo = document.getElementById('click-count');
+const clicksInfo2 = document.getElementById('vatUE');
+const invoiceContainer = document.getElementById('invoice-container');
 
 function handleClick() {
     clickCount++;
@@ -86,10 +88,21 @@ function getCountryCode(countryName) {
 }
 
 
+function handleClick2() {
+    console.log(clicksInfo2);
+    if (clicksInfo2.value)
+    {
+        invoiceContainer.classList.toggle('hidden');
+    }
+}
+
+
 (() => {
     // nasłuchiwania na zdarzenie kliknięcia myszką
     document.addEventListener('click', handleClick);
 
     fetchAndFillCountries();
     getCountryByIP();
+
+    clicksInfo2.addEventListener('click', handleClick2);
 })()
